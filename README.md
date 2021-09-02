@@ -1,0 +1,2 @@
+# teacher
+sueldo profes
