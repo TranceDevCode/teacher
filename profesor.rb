@@ -15,5 +15,8 @@ class Profesor
   end
 end
 
-profes= Profesor.new("18.082.748-1", "Javier", "Gonzales", "titulado", 4, 150, 40) 
-profes.docentes
+profe1 = Profesor.new("18.082.748-1", "Javier", "Gonzales", "titulado", 4, 150, 40)
+profe2 = Profesor.new("18.082.748-1", "Javiera", "Guitierrez", "titulado", 4, 150, 40)
+
+profe1.docentes
+profe2.docentes
