@@ -1,69 +1,83 @@
 class Profesor
+
   attr_reader :horastrabajadas, :antiguedad, :grado, :minutostardanza, :nombre 
+
   def initialize (rut, nombre, apellido, grado, antiguedad, horastrabajadas, minutostardanza)
-   @rut= rut
-   @nombre= nombre
-   @apellido= apellido
-   @grado= grado
-   @antiguedad= antiguedad
-   @horastrabajadas= horastrabajadas
-   @minutostardanza= minutostardanza
+    @rut= rut
+    @nombre= nombre
+    @apellido= apellido
+    @grado= grado
+    @antiguedad= antiguedad
+    @horastrabajadas= horastrabajadas
+    @minutostardanza= minutostardanza
   end
 
-   def docentes
+  def docentes
     puts "Rut #{@rut}, nombre #{@nombre}, #{@apellido}, con grado de #{@grado}, y antiguedad de #{@antiguedad} años, tiene #{@horastrabajadas} horas trabajadas, y #{@minutostardanza} de tardanza"
-   end
+  end
 
-   def gradodocente
-    if @grado == "titulado"
-      puts "grado titulado"
+  def gradodocente
+    if @grado == "bachiller"
+      puts "grado bachiller"
+      puts "Rut #{@rut}, nombre #{@nombre}, #{@apellido}, con grado de #{@grado}, y antiguedad de #{@antiguedad} años, tiene #{@horastrabajadas} horas trabajadas, y #{@minutostardanza} de tardanza"
+    elsif @grado == "titulado" 
+      puts "Grado titulado"
+      puts "Rut #{@rut}, nombre #{@nombre}, #{@apellido}, con grado de #{@grado}, y antiguedad de #{@antiguedad} años, tiene #{@horastrabajadas} horas trabajadas, y #{@minutostardanza} de tardanza"
+    elsif @grado == "maestria"
+      puts "Grado maestria"
+      puts "Rut #{@rut}, nombre #{@nombre}, #{@apellido}, con grado de #{@grado}, y antiguedad de #{@antiguedad} años, tiene #{@horastrabajadas} horas trabajadas, y #{@minutostardanza} de tardanza"
+    else
+      puts "Grado Doctorado"
       puts "Rut #{@rut}, nombre #{@nombre}, #{@apellido}, con grado de #{@grado}, y antiguedad de #{@antiguedad} años, tiene #{@horastrabajadas} horas trabajadas, y #{@minutostardanza} de tardanza"
     end
-   end
+  end
 
-   def antiguedades
-     if @antiguedad >= 15
-        return 0.10
-     elsif @antiguedad >= 11 and @antiguedad <= 15
-        return 0.07
-     elsif @antiguedad >= 7 and @antiguedad <= 10
-        return 0.05
-     elsif @antiguedad >= 4 and @antiguedad <= 6
-        return 0.04
-     else 
-        return 0.03
-     end
+  def antiguedades
+    if @antiguedad >= 15
+      return 0.10
+    elsif @antiguedad >= 11 and @antiguedad <= 15
+      return 0.07
+    elsif @antiguedad >= 7 and @antiguedad <= 10
+      return 0.05
+    elsif @antiguedad >= 4 and @antiguedad <= 6
+      return 0.04
+    else 
+      return 0.03
     end
+  end
 
-    def tardanza
-      if @minutostardanza === 0
-        return 120
-      elsif @minutostardanza >= 1 and @minutostardanza <= 5
-        return 80
-      elsif @minutostardanza >= 6 and @minutostardanza <= 10
-        return 40
-      elsif @minutostardanza >= 11 and @minutostardanza <= 15
-        return 0  
-      else
-        return - 40
-      end
+  def tardanza
+    if @minutostardanza === 0
+      return 120
+    elsif @minutostardanza >= 1 and @minutostardanza <= 5
+      return 80
+    elsif @minutostardanza >= 6 and @minutostardanza <= 10
+      return 40
+    elsif @minutostardanza >= 11 and @minutostardanza <= 15
+      return 0  
+    else
+      return - 40
     end
+  end
 
-    def sueldogrado
-      if @grado == "bachiller"
-        return 40
-      elsif @grado == "titulado"
-        return 80
-      elsif @grado == "maestria"
-        return 100
-      else
-        return 180 
-      end 
-    end
+  def sueldogrado
+    if @grado == "bachiller"
+      return 40
+    elsif @grado == "titulado"
+      return 80
+    elsif @grado == "maestria"
+      return 100
+    else
+      return 180 
+    end 
+  end
 
-    # def sueldomes
-    #    puts ((profe1.horastrabajadas * profe1.sueldogrado) + (profe1.horastrabajadas * profe1.sueldogrado * profe1.antiguedades) + (profe1.tardanza))
-    # end
+  def sueldosporgrados
+    bachiller = 40
+    titulado = 80
+    maestria = 100
+    doctorado = 180
+  end
 
 end
 
@@ -74,15 +88,35 @@ profe4 = Profesor.new("17.370.798-0", "Camila", "Gallardo", "titulado", 4, 140, 
 
 profes = [profe1, profe2, profe3, profe4]
 
-#
-profes.each do |profe|
-  #profe.docentes 
+puts "Lista de docentes con sueldos"
+profes.each do |profe|  
   sueldo = ((profe.horastrabajadas * profe.sueldogrado) + (profe.horastrabajadas * profe.sueldogrado * profe.antiguedades) + (profe.tardanza))
   puts "#{profe.docentes} y su sueldo es #{sueldo} "
-  profe.gradodocente
-
-  puts " el sueldo por grado es #{profe.sueldogrado}"
 end
+
+puts ""
+puts "Sueldos por grados"
+profes.each do |profe|  
+  sueldo = ((profe.horastrabajadas * profe.sueldogrado) + (profe.horastrabajadas * profe.sueldogrado * profe.antiguedades) + (profe.tardanza))
+  puts "#{profe.docentes} y su sueldo es #{sueldo} "
+ 
+  puts " el sueldo por grado  es #{profe.sueldogrado}"
+end
+
+puts ""
+puts "Lista de docentes segun grados"
+profes.each do |profe| 
+  profe.gradodocente
+end
+
+
+
+
+
+
+
+
+#puts "#{docentes.sueldosporgrados}"
 
 
 
